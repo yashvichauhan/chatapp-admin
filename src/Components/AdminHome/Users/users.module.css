@@ -1,0 +1,13 @@
+.row_styles{
+    margin-bottom: 1em;
+}
+.icon_styles{
+    padding-top: 0.4em;
+    font-size: 1.3em;
+    padding-right: 0.5em;
+}
+.customized_filter{
+    padding: 2em;
+    margin-bottom: 2pt;
+    width: 200px;
+}

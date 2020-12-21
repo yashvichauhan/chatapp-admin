@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {useSelector} from 'react-redux';
+import {Route, Switch, withRouter} from 'react-router-dom';
+
+import Login from './Components/Login/login';
+import AdminHome from './Components/AdminHome/adminHome';
 
 function App() {
+  const user = useSelector(state => state.admin.currentAdmin);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="App">
+      <Switch>
+        <Route exact path='/' component={Login}/>
+        {user ? <Route path={'/home'} component={AdminHome}/> :null}
+      </Switch>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App) ;

@@ -1,13 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {Provider} from 'react-redux' ;
+import {createStore, compose, combineReducers, applyMiddleware} from 'redux';
+import thunk from "redux-thunk";
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
+import './index.css';
+import adminReducer from './Store/admin';
+import analysisReducer from './Store/analysisReducer';
+import App from './App';
+import store from './Store/store';
+
+// const rootreducer=combineReducers({
+//   admin:adminReducer,
+//   analysis:analysisReducer
+// })
+
+// const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+// export const store = createStore(rootreducer, composeEnhancers(applyMiddleware(thunk)));
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
